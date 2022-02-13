@@ -1,50 +1,20 @@
-body {
-  font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
+.grid-container {
+  display: grid;
+  grid-template-columns: 40px 40px 40px 40px 40px;
+  background-color: #ffffff;
+  align-content: space-evenly;
+  justify-content:space-evenly;
+  height:290px;
+  width:230px;
+  margin:auto;
 }
-
-ol, ul {
-  padding-left: 30px;
-}
-
-.board-row:after {
-  clear: both;
-  content: "";
-  display: table;
-}
-
-.status {
-  margin-bottom: 10px;
-}
-
-.square {
-  background: #fff;
-  border: 1px solid #999;
-  float: left;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 34px;
-  height: 34px;
-  margin-right: -1px;
-  margin-top: -1px;
-  padding: 0;
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  font-size: 18px;
+  font-family:"Arial";
   text-align: center;
-  width: 34px;
-}
-
-.square:focus {
-  outline: none;
-}
-
-.kbd-navigation .square:focus {
-  background: #ddd;
-}
-
-.game {
-  display: flex;
-  flex-direction: row;
-}
-
-.game-info {
-  margin-left: 20px;
+  user-select: none;
+  color:white;
 }
