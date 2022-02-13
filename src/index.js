@@ -2,10 +2,24 @@ import { isValidDateValue } from '@testing-library/user-event/dist/utils';
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-
-var wordBank = ["DRINK", "BUSTY", "WHALE", "TIMES", "SCOOP", "WEARY", "PILLS", "WEEDS"];
-var ans = wordBank[Math.floor(Math.random() * 8)];
-alert(ans);
+var wordBank;
+var ans;
+function readTextFile(file) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function () {
+        if (rawFile.readyState === 4) {
+            if (rawFile.status === 200 || rawFile.status == 0) {
+                var allText = rawFile.responseText;
+                wordBank = allText.split(/\r?\n/);
+                ans = wordBank[Math.floor(Math.random() *2315)];
+                console.log(ans);
+            }
+        }
+    }
+    rawFile.send(null);
+}
+readTextFile("wordbank.txt");
 class Square extends React.Component {
     constructor(props) {
         super(props)
@@ -85,35 +99,38 @@ class Grid extends React.Component {
                 return;
 
             let imp = "";
-            for (let i = 0;i<5;i++) {
-                imp += String(vals[5 * word  + i]);
+            for (let i = 0; i < 5; i++) {
+                imp += String(vals[5 * word + i]);
             }
             if (wordBank.includes(imp)) {
                 let colorsTemp = this.state.colors.slice();
-                let ansL=[];
+                let ansL = [];
 
-                for(let i=0;i<5;i++){
-                    if(imp.charAt(i)==ans.charAt(i)){
-                        colorsTemp[5*word+i]=2;
-                    }else{
+                for (let i = 0; i < 5; i++) {
+                    if (imp.charAt(i) == ans.charAt(i)) {
+                        colorsTemp[5 * word + i] = 2;
+                    } else {
                         ansL.push(ans.charAt(i));
                     }
                 }
-                for(let i=0;i<5;i++){
-                  if(colorsTemp[5*word+i]!=2){
-                    if(ansL.includes(imp.charAt(i))){
-                        colorsTemp[5*word+i]=1;
-                        ansL.splice(ansL.indexOf(imp.charAt(i)),1);
-                    }else{
-                        colorsTemp[5*word+i]=3;
+                for (let i = 0; i < 5; i++) {
+                    if (colorsTemp[5 * word + i] != 2) {
+                        if (ansL.includes(imp.charAt(i))) {
+                            colorsTemp[5 * word + i] = 1;
+                            ansL.splice(ansL.indexOf(imp.charAt(i)), 1);
+                        } else {
+                            colorsTemp[5 * word + i] = 3;
+                        }
                     }
-                  }
                 }
-                alert(colorsTemp);
+                if (imp == ans)
+                    alert("YOU WIN")
+                if(word==5)
+                    alert("You lost the answer was "+ans);
                 this.setState({
                     word: word + 1,
                     currI: 0,
-                    colors:colorsTemp,
+                    colors: colorsTemp,
                 });
             }
         }
