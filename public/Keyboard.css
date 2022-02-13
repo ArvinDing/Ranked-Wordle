@@ -22,8 +22,8 @@
     margin:3px;
     border-radius: 4px;
     border:none;
-    background:rgba(48, 48, 43, 0.363);
-    color: #fff;
+    background:rgba(43, 43, 39, 0.363);
+    color: rgb(228, 228, 228);
     font-size:1.05rem;
     outline:none;
     cursor:pointer;
