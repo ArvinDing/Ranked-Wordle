@@ -27,7 +27,7 @@ class Square extends React.Component {
     render() {
         if (this.props.color == 0) {
             return (
-                <div className="grid-item" style={{ backgroundColor: "white", color: "black" }} ><b>{this.props.val}</b></div>
+                <div className="grid-item" style={{ backgroundColor: "#f5f5f5", color: "black" }} ><b>{this.props.val}</b></div>
             );
         } else if (this.props.color == 1) {
             return (

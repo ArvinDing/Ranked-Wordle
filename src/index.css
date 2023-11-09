@@ -1,7 +1,12 @@
+html{
+  background-color: rgb(26, 26, 26);
+}
+
 .grid-container {
+  color:aqua;
   display: grid;
   grid-template-columns: 60px 60px 60px 60px 60px;
-  background-color: #ffffff;
+  background-color: rgb(26,26,26);
   align-content: space-evenly;
   justify-content:space-evenly;
   height:380px;
@@ -9,7 +14,7 @@
   margin:auto;
 }
 .grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(150, 46, 46);
   border: 1px solid rgba(0, 0, 0, 0.8);
   border-radius: 5px;
   font-size: 30px;
